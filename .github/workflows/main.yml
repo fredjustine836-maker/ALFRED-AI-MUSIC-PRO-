@@ -1,0 +1,30 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check project files
+        run: |
+          echo "ALFRED AI MUSIC PRO"
+          echo "Checking available source files"
+          ls -la
+
+      - name: Prepare APK notice
+        run: |
+          mkdir -p output
+          echo "Tsy maintsy misy Android project Gradle vao afaka manamboatra APK."
+          echo "ALFRED AI MUSIC PRO" > output/README.txt
+
+      - name: Upload build information
+        uses: actions/upload-artifact@v4
+        with:
+          name: ALFRED-AI-MUSIC-PRO-BUILD-INFO
+          path: output/
